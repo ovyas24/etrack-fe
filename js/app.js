@@ -3,6 +3,14 @@ const details = document.getElementById('details-page');
 const loader = document.getElementById('loader');
 const msg = document.getElementById('msgBlock');
 
+const hasMap = {
+    'order placed': 'OP',
+    'shipped': 'ITNS',
+    'in transit': 'ITNS',
+    'out for delivery': 'OFD',
+    'delivered': 'D'
+}
+
 let loading = false;
 const toggleLoader = () => {
     if(loading) {
@@ -15,9 +23,9 @@ const toggleLoader = () => {
 }
 
 const showMsg = (msg, code) =>  {
+    msg.style.display = 'block';
     msg.innerHTML = '';
     msg.innerHTML = msg;
-    msg.style.display = 'block';
 
     setTimeout(() =>  msg.style.display = 'none', 2000)
 }
@@ -31,7 +39,7 @@ const showTrackingDetails = (number) => {
             console.log(data);
             toggleLoader();
             if(data.code != 200) {
-                // showMsg(data.msg, 'err');
+                showMsg(data.msg, 'err');
             }
             const {status, merchant, trackingId, product, reciverName, edd} = data.order;
             const trackingDetails = data.order.tracking_details;
@@ -49,6 +57,9 @@ const showTrackingDetails = (number) => {
             const trackingDetailsTable = document.getElementById('tracking_details_table');
             trackingDetailsTable.innerHTML = '';
             trackingDetails.reverse().forEach(detail => {
+                const field = document.getElementById(hasMap[detail.status.toLowerCase()])
+                field.classList.remove('progtrckr-todo');
+                field.classList.add('progtrckr-done')
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${detail.date}</td>
