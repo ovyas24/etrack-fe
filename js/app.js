@@ -47,12 +47,18 @@ const showTrackingDetails = (number) => {
                 main.style.display = 'none';
                 details.style.display = 'flex';
             }
-            const [tracking_id, merchant_name, prod_desc, rname, edd_span] = document.querySelectorAll('#trackingId, #merchant, #product_description, #rname, #edd');
+            const tracking_id = document.getElementById('trackingId');
+            const merchant_name = document.getElementById('merchant');
+            const prod_desc = document.getElementById('product_description');
+            const rname = document.getElementById('rname');
+            const edd_span = document.getElementById('edd');
+            // const [tracking_id, merchant_name, prod_desc, rname, edd_span] = document.querySelectorAll('#trackingId, #merchant, #product_description, #rname, #edd');
             tracking_id.innerHTML = trackingId;
             merchant_name.innerHTML = merchant;
             prod_desc.innerHTML = product;
             rname.innerHTML = reciverName;
             edd_span.innerHTML = edd;
+            console.log(edd_span, rname)
             console.log(trackingDetails);
             const trackingDetailsTable = document.getElementById('tracking_details_table');
             trackingDetailsTable.innerHTML = '';
