@@ -23,7 +23,7 @@ const showMsg = (msg, code) =>  {
 }
 
 const showTrackingDetails = (number) => {
-    const url = `http://localhost:5000/track?trackingId=${number}`;
+    const url = `https://etrackapi.herokuapp.com/track?trackingId=${number}`;
     toggleLoader();
     fetch(url)
         .then(response => response.json())
