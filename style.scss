@@ -441,6 +441,7 @@ ol.progtrckr li.progtrckr-todo:before {
         top: 0;
         z-index: 1;
         width: 100%;
+        border-radius: 0 !important;
     }
     .bread_crumb {
         margin-top: 50px;
