@@ -63,9 +63,11 @@ const showTrackingDetails = (number) => {
             const trackingDetailsTable = document.getElementById('tracking_details_table');
             trackingDetailsTable.innerHTML = '';
             trackingDetails.reverse().forEach(detail => {
-                const field = document.getElementById(hasMap[detail.status.toLowerCase()])
-                field.classList.remove('progtrckr-todo');
-                field.classList.add('progtrckr-done')
+                if(detail.status.toLowerCase() && hasMap[detail.status.toLowerCase()]) {
+                    const field = document.getElementById(hasMap[detail.status.toLowerCase()])
+                    field.classList.remove('progtrckr-todo');
+                    field.classList.add('progtrckr-done')
+                }
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${detail.date}</td>
