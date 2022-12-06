@@ -31,7 +31,7 @@ const showMsg = (msg, code) =>  {
 }
 
 const showTrackingDetails = (number) => {
-    const url = `https://etrackapi.herokuapp.com/track?trackingId=${number}`;
+    const url = `https://etrack-api.onrender.com/track?trackingId=${number}`;
     toggleLoader();
     fetch(url)
         .then(response => response.json())
